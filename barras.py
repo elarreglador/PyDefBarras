@@ -2,7 +2,7 @@
 
 # funcion de python que muestras un porcentaje y una barra porcentual
 
-def barras(valor,maximo,largoBarra):
+def barras(valor,maximo=100,largoBarra=50):
 	porcentaje = (valor*100)/maximo
 	intPorcentaje = int(float(porcentaje))
 	valorCaracteres = int(float(porcentaje/(100/largoBarra)))
@@ -24,22 +24,38 @@ def barras(valor,maximo,largoBarra):
 	else:
 		print ("["+str(intPorcentaje)+"% ", end="")
 
-	while valorCaracteres > 0:
-		print ("▓", end="")
-		valorCaracteres = valorCaracteres-1
-	while resto > 0:
-		print ("░", end="")
-		resto = resto-1
+	if intPorcentaje > 100 or intPorcentaje < 0: # error de valor % incorrecto
+		print ("no se acepta", end="")
+	else:
+		while valorCaracteres > 0:
+			print ("▓", end="")
+			valorCaracteres = valorCaracteres-1
+		while resto > 0:
+			print ("░", end="")
+			resto = resto-1
 	print (" ]")
 
-barras(3,100,50)
+#Si solo pasamos un argumento sera un porcentual
+barras(50)
 print ()
-barras(10,100,50)
+
+#Si pasamos dos argumentos se calculara el porcentaje
+#El valor por defecto es 100
+#en este caso 20 de 200 es el 10%
+barras(20,200)
 print ()
+
+#El tercer parametro indica la longitud de la barra
 barras(35,100,80)
 print ()
-barras(70,100,30)
+barras(35,100,30)
 print ()
-barras(95,100,50)
+
+#La linea ocupa lo mismo independientemente de si el porcentaje es 1%,100% o cualquier otro
+barras(2,100)
 print ()
-barras(100,100,50)
+barras(100,100)
+print ()
+
+barras(120)
+print ()
