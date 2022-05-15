@@ -36,7 +36,7 @@ def barras(valor,maximo=100,largoBarra=50):
 	print (" ]")
 
 #Si solo pasamos un argumento sera un porcentual
-barras(50)
+barras(0)
 print ()
 
 #Si pasamos dos argumentos se calculara el porcentaje
@@ -57,5 +57,10 @@ print ()
 barras(100,100)
 print ()
 
-barras(120)
+#Porcentuales erroneos
+barras(101)
+print ()
+barras(-1)
+print ()
+barras(50,25)
 print ()
